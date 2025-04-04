@@ -48,12 +48,28 @@ button{
   border-radius: 100px;
 }
 
+#navPart1{
+  display: flex;
+  align-items: center;
+  gap: 4vw;
+}
+#menu{
+  height: 2vw;
+  width: 2vw;
+  display: none;
+}
+
 @media (max-width:600px) {
 #bar{
   font-size: 2vh;
 }
   #btn{
     display: none;
+  }
+  #menu{
+    display: initial;
+    height: 5vh;
+    width: 5vh;
   }
 
 }
