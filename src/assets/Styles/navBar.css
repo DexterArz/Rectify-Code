@@ -2,15 +2,16 @@
 display: flex;
 align-items: center;
 justify-content: center;
-padding: 1rem;
+padding: 0.75rem;
 }
 
 #bar{
+  color: #C4F1F9;
   font-size: 2vw;
   width: 100vw;
   border: none;
   border-radius: 32px;
-  background: royalblue;
+  background: #44337a;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -34,6 +35,8 @@ align-items: center;
   width: 2px;
 }
 button{
+  background: #FFF5F7;
+  color: #44337a;
   border: none;
   border-radius: 16px;
   padding: 1vw;
@@ -41,7 +44,7 @@ button{
 }
 
 #Dp{
-  background: wheat;
+  background: #fff;
   border: none;
   height: 64px;
   width: 64px;
@@ -61,7 +64,7 @@ button{
 
 @media (max-width:600px) {
 #bar{
-  font-size: 2vh;
+  font-size: 3vh;
 }
   #btn{
     display: none;
