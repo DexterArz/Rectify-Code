@@ -1,0 +1,60 @@
+#editorBar{
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 1rem;
+}
+
+#bar{
+  font-size: 2vw;
+  width: 100vw;
+  border: none;
+  border-radius: 32px;
+  background: royalblue;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem;
+}
+#btn{
+  display: flex;
+  gap: 14px;
+}
+
+#navPart2{
+ display: flex;
+align-items: center;
+ gap: 2vw;
+
+}
+
+#line1{
+  background: white;
+  height: 64px;
+  width: 2px;
+}
+button{
+  border: none;
+  border-radius: 16px;
+  padding: 1vw;
+  font-size: 1.5vw
+}
+
+#Dp{
+  background: wheat;
+  border: none;
+  height: 64px;
+  width: 64px;
+  border-radius: 100px;
+}
+
+@media (max-width:600px) {
+#bar{
+  font-size: 2vh;
+}
+  #btn{
+    display: none;
+  }
+
+}
+
