@@ -1,25 +1,39 @@
-import React from 'react'
-import "../assets/Styles/mainEditor.css"
-import Files from './Files'
+import React, { useRef, useState } from "react";
+import "../assets/Styles/mainEditor.css";
+import Files from "./Files";
+import Editor, { DiffEditor, useMonaco, loader } from "@monaco-editor/react";
 
 const MainEditor = () => {
+ const editorRef = useRef()
+  const [EditroInput, setEditroInput] = useState("");
+  const editorMount = (editor, monaco) =>{
+    editorRef.current= editor;
+    editor.focus();
+  }
   return (
     <div id="container1">
-         <main>
-          <div id="code-space"></div>
-          <div id="output">
+      <main>
+        <div id="code-space">
+          <Editor
 
-         <div id="fileContainer">
-         <Files/>
-         </div>
-            <div id="termux">
-
-            </div>
+            theme="vs-dark"
+            defaultLanguage="javascript"
+            defaultValue="// some comment"
+            value={EditroInput}
+            nChange={(value) => setEditroInput(value)}
+            onMount={editorMount}
+          />
+        </div>
+        <div id="output">
+          <div id="fileContainer">
+            <Files />
+            <Files />
           </div>
-         </main>
+          <div id="termux">{EditroInput}</div>
+        </div>
+      </main>
     </div>
+  );
+};
 
-  )
-}
-
-export default MainEditor
+export default MainEditor;

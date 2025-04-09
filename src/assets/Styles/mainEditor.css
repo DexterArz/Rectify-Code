@@ -20,7 +20,7 @@ main{
   border-radius: 16px;
   background: #C4F1F9;
   height:50%;
-
+  position: relative;
 }
 
  #output{
@@ -61,5 +61,6 @@ main{
   overflow-x: auto;
 
 }
+
 
 
