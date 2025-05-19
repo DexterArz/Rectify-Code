@@ -21,6 +21,8 @@ const [currentVersion, setcurrentVersion] = useState('')
   // Load file content if passed via state
   useEffect(() => {
     if (state) {
+      console.log(state.version);
+      
       setcurrentVersion(state.version)
       setValue(state.content);
       setCurrentLanguage(state.language);
@@ -59,6 +61,7 @@ const [currentVersion, setcurrentVersion] = useState('')
         fileName: state?.fileName || "Untitled",
         content: value,
         language: currentLanguage,
+        version: currentVersion,
       };
 
     const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/file/upload`, fileData,{
@@ -78,6 +81,10 @@ console.log(response);
     } catch (err) {
       alert("Failed to save file: " + (err.response?.data?.message || err.message));
     }
+  };
+
+  const backFunc = () => {
+    navigate("/userdashboard"); 
   };
 
   useEffect(() => {
@@ -136,7 +143,7 @@ console.log(response);
   return (
     <div className={`editor ${theme === "catppuccin-dark" ? "dark-theme" : "light-theme"}`}>
       <div className="editorNav">
-        <h4>{state?.fileName || "Untitled"}</h4>
+        <h4 onClick={backFunc}>{state?.fileName || "Untitled"}</h4>
         <div className="btnContainer">
           <button className="btn" onClick={runCode}>
             <i className="ri-play-large-fill"></i> Run

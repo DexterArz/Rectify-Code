@@ -1,9 +1,142 @@
-.homeMain{
-    height: 100vh;
-    width: 100vw;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+span{
+    display: inline-block;
+}
+body {
+  background: #181825;
+  color: whitesmoke;
+  overflow-x: hidden;
+}
+main {
+  height: 100%;
+ 
+}
+.reactify h1 {
+  color: #cba6f7;
+  font-family: "Major Mono Display", monospace;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 15vw;
+}
+.reactify p {
+  color: #b4befe;
+  font-family: "Aboreto", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.5vw;
+}
+.reactify {
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  flex-direction: column;
+  gap: 1.75rem;
 }
 
-.homeNav{
-    font-size: 2rem;
+.ccc {
+  /* background-color: #CBA6F7; */
+  color: #f5c2e7;
+  padding: 5vw;
+  
+
+}
+
+.ccc h1 {
+  font-family: "Aboreto", system-ui;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 40vw;
+  white-space: nowrap;
+}
+
+
+.lgs {
+  /* background: paleturquoise; */
+  color: #89b4fa;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2.75rem;
+}
+
+.lgs h4 {
+  font-family: "Aboreto", system-ui;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 5vw;
+}
+
+.lgs i {
+  font-size: 9vw;
+  font-weight: 100;
+}
+
+.NaveHome h1{
+
+  font-size: 5vw;
+}
+
+.NaveHome{
+  width: 100vw;
+  padding: 1em 4em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#SignUPButton{
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  padding-left: 1em;
+  padding-right: 1em;
+  font-size: 1.25em;
+  background: #f5c2e7;
+  outline: none;
+  border: none;
+  border-radius: 0.25em;
+}
+
+#SignUPButton:hover{
+
+ background: #cba6f7;
+ transition: all 0.25s ease-in-out;
+}
+
+@media only screen and (max-width: 600px) {
+  .reactify{
+    gap: 4vh;
+  }
+.reactify h1 {
+  font-size: 7vh;
+}
+.reactify p {
+
+  font-size: 4vw;text-align: center;
+}
+
+.lgs h4 {
+
+    font-size: 4vh;
+}
+.lgs i {
+  font-size: 7vh;
+}
+.ccc h1 {
+  font-size: 75vh;
+}
 
 }
