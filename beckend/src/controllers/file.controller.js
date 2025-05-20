@@ -4,7 +4,7 @@ import cloudinary from '../utils/cloudinary.js';
 import axios from 'axios';
 
 
-const uploadFile = async (req, res) => {
+  const uploadFile = async (req, res) => {
   const { fileName, content, language, version } = req.body;
   const { _id } = req.user;
 
@@ -88,7 +88,7 @@ const uploadFile = async (req, res) => {
   }
 
 
- const getFileById = async (req, res) => {
+  const getFileById = async (req, res) => {
   const { id } = req.params;
 
   try {
