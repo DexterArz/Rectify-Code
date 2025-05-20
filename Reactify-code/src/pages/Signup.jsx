@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import { Link } from 'react-router-dom';
 import React from 'react';
 import { useState } from 'react';
 
@@ -41,9 +41,9 @@ const Signup = () => {
         <form className="signUp" onSubmit={handleSubmit}>
           <div className="title">
             <h1>Reactify-Code</h1>
-            <p>
+            <Link to="/signin" >
               Already have an account? <span>Login</span>
-            </p>
+            </Link>
           </div>
           <div className="inputs">
             <div className="inputWrapper">

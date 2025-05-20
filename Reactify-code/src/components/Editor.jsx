@@ -18,7 +18,7 @@ const [currentVersion, setcurrentVersion] = useState('')
   console.log(currentLanguage);
   
 
-  // Load file content if passed via state
+ 
   useEffect(() => {
     if (state) {
       console.log(state.version);
@@ -32,11 +32,11 @@ const [currentVersion, setcurrentVersion] = useState('')
 
   const Api = axios.create({
   baseURL: "https://emkc.org/api/v2/piston",
-  withCredentials: false,  // Explicitly disable credentials
+  withCredentials: false,  
 });
 
 
-  // Run code using the Piston API
+  
   const runCode = async () => {
     try {
       const resp = await Api.post("/execute", {
@@ -65,7 +65,7 @@ const [currentVersion, setcurrentVersion] = useState('')
       };
 
     const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/file/upload`, fileData,{
-  withCredentials: true,   // Ensures cookies are sent with the request
+  withCredentials: true,   
 });
 
 console.log(response);
@@ -76,7 +76,7 @@ console.log(response);
       } else {
         alert("Error saving file: " + response.data.error);
       }
-      navigate("/userdashboard");
+      // navigate("/userdashboard");
       
     } catch (err) {
       alert("Failed to save file: " + (err.response?.data?.message || err.message));

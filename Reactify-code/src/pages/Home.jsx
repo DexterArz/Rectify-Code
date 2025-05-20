@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 // ScrollSmoother requires ScrollTrigger
 import { ScrollSmoother } from "gsap/ScrollSmoother";
+import { Link } from "react-router-dom"
 
 gsap.registerPlugin(useGSAP,ScrollTrigger,ScrollSmoother);
 import React, { use, useEffect } from "react";
@@ -57,9 +58,9 @@ const Home = () => {
       <div className="NaveHome">
         <h1>R</h1>
 
-        <button id="SignUPButton"> 
+        <Link id="SignUPButton" to="/signup"> 
           Signup
-        </button>
+        </Link>
       </div>
         <h1>
           <span>Reactify</span>
