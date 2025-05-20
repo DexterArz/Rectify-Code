@@ -13,6 +13,7 @@ const File = ({fileName,fileId}) => {
     try {
       const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/file/${fileId}`);
       if (response.status === 200) {
+        console.log("File opened successfully:", response.data);
         navigate("/editor", { state: response.data });
       }
     } catch (err) {

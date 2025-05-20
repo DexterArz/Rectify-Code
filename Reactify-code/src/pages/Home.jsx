@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "@studio-freight/lenis";
 import { useGSAP } from "@gsap/react";
+import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -249,8 +250,12 @@ const Home = () => {
             </div>
 
             <div className="navAuth">
+              <Link to="/signin">
               <h4>signin</h4>
+              </Link>
+              <Link to="/signup">
               <h4>signup</h4>
+              </Link>
             </div>
           </div>
         </div>

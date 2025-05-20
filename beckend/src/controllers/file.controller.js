@@ -4,54 +4,54 @@ import cloudinary from '../utils/cloudinary.js';
 import axios from 'axios';
 
 
+  const uploadFile = async (req, res) => {
+  const { fileName, content, language, version } = req.body;
+  const { _id } = req.user;
 
-const uploadFile = async (req, res) => {
-    const { fileName, content, language} = req.body;
-    const {_id} = req.user
-  
-    try {
-      // Upload raw content to Cloudinary
-      const uploadRes = await cloudinary.uploader.upload(
-        `data:text/plain;base64,${Buffer.from(content).toString('base64')}`,
-        {
-          resource_type: 'raw',
-          public_id: `codefiles/${_id}/${fileName}`,
-          overwrite: true,
-        }
-      );
-  
-      // Save or update file metadata
-      const fileDoc = await File.findOneAndUpdate(
-        { fileName, user: _id },
-        {
-          fileName,
-          cloudinaryUrl: uploadRes.secure_url,
-          publicId: uploadRes.public_id,
-          language,
-          user: _id,
-          lastUpdated: new Date(),
-        },
-        { upsert: true, new: true }
-      );
-      console.log("File document: ", fileDoc);
-      
+  try {
+    // Upload raw content to Cloudinary
+    const uploadRes = await cloudinary.uploader.upload(
+      `data:text/plain;base64,${Buffer.from(content).toString('base64')}`,
+      {
+        resource_type: 'raw',
+        public_id: `codefiles/${_id}/${fileName}`,
+        overwrite: true,
+      }
+    );
 
-      const user = await User.findById(req.user._id);
+    // Save or update file metadata
+    const fileDoc = await File.findOneAndUpdate(
+      { fileName, user: _id },
+      {
+        fileName,
+        cloudinaryUrl: uploadRes.secure_url,
+        publicId: uploadRes.public_id,
+        language,
+        version, // Add version here
+        user: _id,
+        lastUpdated: new Date(),
+      },
+      { upsert: true, new: true }
+    );
+    console.log("File document: ", fileDoc);
 
-// Check if file already exists in the user's files array
-      const fileExists = user.files.some(file => file._id.equals(fileDoc._id));
+    const user = await User.findById(_id);
 
-      if (!fileExists) {
-      user.files.push(fileDoc);  // Add the full object if not a duplicate
+    // Check if file already exists in the user's files array
+    const fileExists = user.files.some(file => file._id.equals(fileDoc._id));
+
+    if (!fileExists) {
+      user.files.push(fileDoc);
       await user.save();
-}
-  
-      res.status(201).json({ message: 'File uploaded/updated', file: fileDoc });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Cloudinary upload failed' });
     }
+
+    res.status(201).json({ message: 'File uploaded/updated', file: fileDoc });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Cloudinary upload failed' });
   }
+};
+
 
 
   const editFile = async (req, res) => {
@@ -99,7 +99,6 @@ const uploadFile = async (req, res) => {
     }
     console.log("Public ID: ", file.publicId);
 
-
     // Fetch file metadata from Cloudinary
     const response = await cloudinary.api.resource(file.publicId, {
       resource_type: "raw",
@@ -126,12 +125,14 @@ const uploadFile = async (req, res) => {
       fileName: file.fileName,
       language: file.language,
       content,
+      version: file.version, // ✅ Added version here
     });
   } catch (err) {
     console.error("Error fetching file:", err.message);
     res.status(500).json({ error: "Internal server error" });
   }
 };
+
 
   export {
     uploadFile,

@@ -44,6 +44,26 @@ const Userdashboard = () => {
     });
   };
 
+  const handleLogout = async()=>{
+    try {
+
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      const response = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/user/logout`,{},
+        { withCredentials: true }
+      );
+      console.log(response);
+      if (response.status === 200) {
+        navigate("/");
+      } else {
+        alert("Error logging out: " + response.data.error);
+      }
+    } catch (err) {
+      alert("Failed to log out: " + (err.response?.data?.message || err.message));
+    }
+  }
+
   return (
     <div className="dasMain">
       {showCreateFile && (
@@ -74,7 +94,7 @@ const Userdashboard = () => {
       <div className="dasNav">
         <h4>ReactifyCode</h4>
         <div className="toggles">
-          <button className="btn">
+          <button className="btn" onClick={handleLogout}>
             <i className="ri-logout-box-line"></i> Logout
           </button>
         </div>
